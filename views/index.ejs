@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
   </head>
   <body>
     <form action="/name" method="POST">
@@ -12,8 +13,14 @@
       <input id="participant-name" name="participant" type="text" placeholder="enter name">
       <input type="submit" value="submit"> 
     </form>
-    <form action="/sort" method="POST">
+    <form action="/sort" method="POST" class="handler">
       <input type="submit" value="pair up">
+    </form>
+    <form action="/delete" method="POST" class="handler">
+      <input type="submit" value="delete">
+    </form>
+    <form action="/delete/pairs" method="POST" class="handler">
+      <input type="submit" value="clear pairs">
     </form>
     <section class="participants-list">
       <ul>
@@ -21,6 +28,7 @@
           <li><%= participant %></li>
         <% } %>
       </ul>
+     
     </section>
     <section class="participants-list">
       <ul>

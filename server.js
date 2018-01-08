@@ -3,10 +3,12 @@ const bodyParser = require ("body-parser");
 const http = require ("http");
 const app = express();
 const PORT = process.env.PORT || 3000;
+const path = require('path');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 // set view engine to ejs
 app.set('view engine', 'ejs');
+app.use(express.static(path.join(__dirname, "/public")));
 
 const participants = [];
 const sortedParticipants = [];
@@ -22,12 +24,7 @@ function addParticipant (participant, res) {
   participants.push(participant);
   res.status(302).redirect("/");
 }
-// app.get('/sort', (req, res) => {
-//   const templateVars = {
-//     sortedParticipants
-//   }
-//   res.render('pairs', templateVars);
-// })
+
 app.post('/sort', (req, res) => {
   randomlySort(participants, res);
 })
@@ -37,10 +34,19 @@ function randomlySort (participants, res) {
     res.send('no more participants');
   } else {
     sortedParticipants.push(participants.splice(index, 1));
-    res.redirect('/');
+    res.redirect('/').status(302);
   }
 }
 
+app.post('/delete', (req, res) => {
+  participants.splice(0);
+  res.redirect('/').status(300);
+})
+
+app.post('/delete/pairs', (req, res) => {
+  sortedParticipants.splice(0);
+  res.redirect('/').status(300);
+})
 function generateRandomNumber (arrayLength) {
   let number = Math.floor(Math.random() * arrayLength);
   return number;
