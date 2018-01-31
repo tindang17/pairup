@@ -19,38 +19,42 @@ app.get('/', (req, res) => {
   };
   res.render('index', templateVars);
 });
-
+// when user enter the participants name;
 function addParticipant (participant, res) {
   participants.push(participant);
   res.status(302).redirect("/");
 }
-
 app.post('/sort', (req, res) => {
-  randomlySort(participants, res);
+  shuffle(participants, res);
 })
-function randomlySort (participants, res) {
-  const index = generateRandomNumber(participants.length);
+// shuffle participants
+function generateRandomNumber (arrayLength) {
+  let number = Math.floor(Math.random() * arrayLength);
+  return number;
+}
+function shuffle (participants, res) {
   if (participants.length === 0) {
     res.send('no more participants');
   } else {
-    sortedParticipants.push(participants.splice(index, 1));
-    res.redirect('/').status(302);
+    let rIndex;
+    while (participants.length !== 0) {
+      rIndex = generateRandomNumber(participants.length);
+      sortedParticipants.push(participants[rIndex]);
+      participants.splice(rIndex, 1);
+    }
+    res.status(302).redirect("/");
   }
 }
 
 app.post('/delete', (req, res) => {
   participants.splice(0);
-  res.redirect('/').status(300);
+  res.status(300).redirect("/");
 })
 
 app.post('/delete/pairs', (req, res) => {
   sortedParticipants.splice(0);
-  res.redirect('/').status(300);
+  res.status(300).redirect("/");
 })
-function generateRandomNumber (arrayLength) {
-  let number = Math.floor(Math.random() * arrayLength);
-  return number;
-}
 app.post('/name', (req, res) => {
   const { participant } = req.body;
   if (participant === '') {
