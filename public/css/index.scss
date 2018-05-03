@@ -1,0 +1,34 @@
+$mainColor: #3A399A;
+form {
+  width: 40rem;
+  margin: auto;
+  padding: 10px;
+  border: solid $mainColor;
+  label {
+    text-transform: uppercase;
+    color: $mainColor;
+    display: block;
+    border-bottom: 1px solid $mainColor;
+  }
+  button {
+    padding: .375rem .75rem;
+    background: $mainColor;
+    color: white;
+    &:focus {
+      outline: none;
+    }
+    &:hover {
+      background: black;
+    }
+  }
+}
+.form-control {
+  display: inline-block;
+  width: 35.2rem;
+  border-radius: 0;
+  color: $mainColor;
+  &:focus {
+    border-color: $mainColor;
+    box-shadow: none;
+  }
+}

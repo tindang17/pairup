@@ -1,0 +1,9 @@
+{
+  "presets": [
+    "es2015",
+    "react",
+    "env", 
+    "es2017"
+  ],
+  "plugins": ["react-hot-loader/babel", "emotion","transform-class-properties","transform-es2015-destructuring"]
+}
