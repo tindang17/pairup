@@ -12,7 +12,7 @@ const Name = (props) => {
         padding: 5px;
         text-align: center;
         `}>
-      {props.name}
+      {props.children}
     </p>
   );
 }
