@@ -1,30 +1,30 @@
 import React, { Component   } from 'react';
-import styled from 'emotion';
+import Name from './Name.jsx'
+import {css} from 'emotion';
 
 class PairsList extends Component {
-  state = {
-    sortedArr: []
-  }
-  randomlySort = () => {
+  takeTwo = () => {
+    let pair = [];
     const names = [...this.props.names];
-    const arr = [];
-    let element;
-    let randomIndex;
-    console.log(names); 
-    while(names.length !== 0) {
-      randomIndex = Math.floor(Math.random() * names.length);
-      arr.push(names[randomIndex]);
-      names.splice(randomIndex, 1);
+    let i = 0;
+    while (names.length !== 0) {
+      pair.push(names.splice(i, 2));
     }
-    this.setState({sortedArr: arr});
-  }
-  componentDidMount() {
-    this.randomlySort();
+    return pair;     
   }
   render() {
-    console.log('ggggg', this.state.sortedArr);
+    const pair = this.takeTwo().map(el => {
+      return <Name pair={el} />;
+    });
     return (
-      <p>Hi</p>
+      <section className={css({
+      margin: "auto",
+      padding: "10px",
+      overflowWrap: 'break-word',
+      textAlign: "center" 
+      })}>
+        {pair}
+      </section>
     )
   }
 }
