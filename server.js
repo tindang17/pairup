@@ -1,14 +1,14 @@
-const express = require ("express");
-const bodyParser = require ("body-parser");
-const http = require ("http");
-const app = express();
-const PORT = process.env.PORT || 3000;
-const path = require('path');
+// const express = require ("express");
+// const bodyParser = require ("body-parser");
+// const http = require ("http");
+// const app = express();
+// const PORT = process.env.PORT || 3000;
+// const path = require('path');
 
-app.use(bodyParser.urlencoded({ extended: false }));
-// set view engine to ejs
-app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, "/public")));
+// app.use(bodyParser.urlencoded({ extended: false }));
+// // set view engine to ejs
+// app.set('view engine', 'ejs');
+// app.use(express.static(path.join(__dirname, "/public")));
 
 // const participants = [];
 // const sortedParticipants = [];
