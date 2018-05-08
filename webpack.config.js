@@ -1,10 +1,12 @@
 var webpack = require('webpack');
 var path = require('path');
 module.exports = {
+  devtool: "source-map",
   entry: "./src/index.js",
   output: {
-    path: path.resolve(__dirname, "./build"),
-    filename: "bundle.js"
+    path: path.resolve(__dirname, "public"),
+    filename: "bundle.js",
+    publicPath: "/build/"
   },
   module: {
     rules: [
@@ -30,7 +32,5 @@ module.exports = {
     historyApiFallback: true,
     inline: true
   },
-  plugins: [
-    new webpack.NamedModulesPlugin()
-  ],
+  plugins: [new webpack.NamedModulesPlugin()]
 };
