@@ -9,7 +9,7 @@
     "start": "webpack-dev-server --hot --mode development --open ",
     "build": "webpack --mode production",
     "storybook": "start-storybook -p 9001 -c .storybook",
-    "heroku-postbuild": "yarn && yarn --only=dev --no-shrinkwrap && npm run build"
+    "heroku-postbuild": "yarn && yarn --only=dev --no-shrinkwrap"
   },
   "repository": {
     "type": "git",
